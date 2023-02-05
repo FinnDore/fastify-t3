@@ -8,24 +8,26 @@ import {
     ZodTypeProvider,
 } from 'fastify-type-provider-zod';
 import { z } from 'zod';
-import { description, name, version } from '../package.json';
+import packageJSON from '../package.json' assert { type: 'json' };
 
-const server: FastifyInstance = Fastify({});
+const docsUrl = '/documentation';
+const port = +(process.env.PORT ?? 3000);
+
+const server: FastifyInstance = Fastify();
 server.setValidatorCompiler(validatorCompiler);
 server.setSerializerCompiler(serializerCompiler);
 
 server.register(fastifySwagger, {
     openapi: {
         info: {
-            title: name,
-            description,
-            version,
+            title: packageJSON.name,
+            description: packageJSON.description,
+            version: packageJSON.version,
         },
         servers: [],
     },
     transform: jsonSchemaTransform,
 });
-
 server.register(fastifySwaggerUI, {
     routePrefix: '/documentation',
 });
@@ -52,14 +54,17 @@ s.after(async () => {
             });
         }
     );
-
-    try {
-        server.after(() =>
-            console.log(`Server started on port ${process.env.PORT ?? 3000}`)
-        );
-        await server.listen({ port: +(process.env.PORT ?? 3000) });
-    } catch (err) {
-        server.log.error(err);
-        process.exit(1);
-    }
 });
+
+server.after(() =>
+    console.log(
+        `Server started on port ${port} 🚀\nSwagger: http://localhost:${port}${docsUrl}} 🤓 `
+    )
+);
+
+try {
+    await server.listen({ port: +(process.env.PORT ?? 3000) });
+} catch (err) {
+    server.log.error(`Failed to start the server ${err}`);
+    process.exit(1);
+}

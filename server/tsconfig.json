@@ -7,15 +7,15 @@
         "strict": true,
         "forceConsistentCasingInFileNames": true,
         "esModuleInterop": true,
-        "module": "esnext",
+        "module": "ESNext",
         "moduleResolution": "node",
         "resolveJsonModule": true,
         "jsx": "preserve",
         "incremental": true,
         "outDir": "./dist",
-        "baseUrl": ".",
+        "baseUrl": "src",
         "paths": {
-            "@/*": ["./src/*"]
+            "@/*": ["*"]
         },
         "noUncheckedIndexedAccess": true
     },
