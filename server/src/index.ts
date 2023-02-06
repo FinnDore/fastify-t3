@@ -11,7 +11,7 @@ import { z } from 'zod';
 import packageJSON from '../package.json' assert { type: 'json' };
 
 const docsUrl = '/documentation';
-const port = +(process.env.PORT ?? 3000);
+const port = +(process.env.PORT ?? 3001);
 
 const server: FastifyInstance = Fastify();
 server.setValidatorCompiler(validatorCompiler);
@@ -63,7 +63,7 @@ server.after(() =>
 );
 
 try {
-    await server.listen({ port: +(process.env.PORT ?? 3000) });
+    await server.listen({ port });
 } catch (err) {
     server.log.error(`Failed to start the server ${err}`);
     process.exit(1);
