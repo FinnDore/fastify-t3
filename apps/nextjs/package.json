@@ -12,9 +12,6 @@
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
-    "@acme/api": "*",
-    "@acme/auth": "*",
-    "@acme/db": "*",
     "@acme/tailwind-config": "*",
     "@tanstack/react-query": "^4.23.0",
     "@trpc/client": "^10.9.0",

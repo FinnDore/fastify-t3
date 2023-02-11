@@ -1,7 +1,4 @@
 packages:
-  - apps/nextjs
-  - apps/server
-  - packages/api
-  - packages/auth
-  - packages/db
-  - packages/config/*
+  # - apps/nextjs
+  - apps/fastify-t3
+  # - packages/config/*
