@@ -1,24 +1,16 @@
 {
-  "$schema": "https://turborepo.org/schema.json",
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": ["**/.env.*local"],
   "pipeline": {
-    "dev": {
-      "persistent": true,
-      "cache": false
-    },
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**"]
+      "outputs": ["dist/**", ".next/**"]
     },
-    "lint": {},
-    "clean": {
-      "cache": false
+    "lint": {
+      "outputs": []
     },
-    "//#clean": {
-      "cache": false
-    },
-    "type-check": {
+    "dev": {
       "cache": false
     }
-  },
-  "globalEnv": ["NEXTAUTH_SECRET", "NEXTAUTH_URL", "NODE_ENV"]
+  }
 }
