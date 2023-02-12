@@ -23,6 +23,7 @@ const server: FastifyInstance = Fastify({
 
 server.setValidatorCompiler(validatorCompiler);
 server.setSerializerCompiler(serializerCompiler);
+
 const packageJSON = {
     name: '@acme/server',
     description: 'aaa',
@@ -76,7 +77,7 @@ void s.after(() => {
 
 server.after(() =>
     console.log(
-        `Server started on port ${port} 🚀\nSwagger: http://localhost:${port}${docsUrl}} 🤓 `
+        `Server started on port ${port} 🚀\nSwagger: http://localhost:${port}${docsUrl} 🤓 `
     )
 );
 

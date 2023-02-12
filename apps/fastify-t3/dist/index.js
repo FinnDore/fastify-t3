@@ -57,7 +57,7 @@ void s.after(() => {
         });
     });
 });
-server.after(() => console.log(`Server started on port ${port} 🚀\nSwagger: http://localhost:${port}${docsUrl}} 🤓 `));
+server.after(() => console.log(`Server started on port ${port} 🚀\nSwagger: http://localhost:${port}${docsUrl} 🤓 `));
 try {
     await server.listen({ port });
 }
